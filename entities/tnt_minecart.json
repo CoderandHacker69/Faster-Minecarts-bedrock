@@ -108,8 +108,41 @@
 							},
 							"swing": true,
 							"interact_text": "action.interact.creeper"
+						},
+						{
+							"on_interact": {
+								"event": "minecraft:speed_menu",
+								"target": "self"
+							},
+							"condition": "query.is_sneaking",
+							"use_item": false
 						}
 					]
+				}
+			},
+			"minecraft:slow_speed": {
+				"minecraft:rail_movement": {
+					"max_speed": 0.4
+				}
+			},
+			"minecraft:normal_speed": {
+				"minecraft:rail_movement": {
+					"max_speed": 1.0
+				}
+			},
+			"minecraft:fast_speed": {
+				"minecraft:rail_movement": {
+					"max_speed": 2.0
+				}
+			},
+			"minecraft:very_fast_speed": {
+				"minecraft:rail_movement": {
+					"max_speed": 5.0
+				}
+			},
+			"minecraft:super_fast_speed": {
+				"minecraft:rail_movement": {
+					"max_speed": 10.0
 				}
 			}
 		},
@@ -159,7 +192,8 @@
 			"minecraft:entity_spawned": {
 				"add": {
 					"component_groups": [
-						"minecraft:inactive"
+						"minecraft:inactive",
+						"minecraft:normal_speed"
 					]
 				}
 			},
@@ -184,6 +218,113 @@
 				"add": {
 					"component_groups": [
 						"minecraft:instant_explode_tnt"
+					]
+				}
+			},
+			"minecraft:speed_menu": {
+				"run_command": {
+					"command": [
+						"tellraw @p [\"\",{\"text\":\"TNT Minecart Speed Options:\\n\",\"color\":\"gold\"},{\"text\":\"0.4 - Slow (Vanilla)\\n\",\"color\":\"gray\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute @e[type=minecraft:tnt_minecart,c=1] ~~~ event minecraft:set_slow_speed\"}},{\"text\":\"1.0 - Normal (Current)\\n\",\"color\":\"white\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute @e[type=minecraft:tnt_minecart,c=1] ~~~ event minecraft:set_normal_speed\"}},{\"text\":\"2.0 - Fast\\n\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute @e[type=minecraft:tnt_minecart,c=1] ~~~ event minecraft:set_fast_speed\"}},{\"text\":\"5.0 - Very Fast\",\"color\":\"yellow\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/execute @e[type=minecraft:tnt_minecart,c=1] ~~~ event minecraft:set_very_fast_speed\"}}]"
+					]
+				}
+			},
+			"minecraft:set_slow_speed": {
+				"remove": {
+					"component_groups": [
+						"minecraft:normal_speed",
+						"minecraft:fast_speed",
+						"minecraft:very_fast_speed",
+						"minecraft:super_fast_speed"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:slow_speed"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tellraw @p [\"\",{\"text\":\"TNT Minecart speed set to \",\"color\":\"aqua\"},{\"text\":\"0.4\",\"color\":\"gray\",\"bold\":true},{\"text\":\" (Slow)\",\"color\":\"gray\"}]"
+					]
+				}
+			},
+			"minecraft:set_normal_speed": {
+				"remove": {
+					"component_groups": [
+						"minecraft:slow_speed",
+						"minecraft:fast_speed",
+						"minecraft:very_fast_speed",
+						"minecraft:super_fast_speed"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:normal_speed"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tellraw @p [\"\",{\"text\":\"TNT Minecart speed set to \",\"color\":\"aqua\"},{\"text\":\"1.0\",\"color\":\"white\",\"bold\":true},{\"text\":\" (Normal)\",\"color\":\"white\"}]"
+					]
+				}
+			},
+			"minecraft:set_fast_speed": {
+				"remove": {
+					"component_groups": [
+						"minecraft:slow_speed",
+						"minecraft:normal_speed",
+						"minecraft:very_fast_speed",
+						"minecraft:super_fast_speed"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:fast_speed"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tellraw @p [\"\",{\"text\":\"TNT Minecart speed set to \",\"color\":\"aqua\"},{\"text\":\"2.0\",\"color\":\"green\",\"bold\":true},{\"text\":\" (Fast)\",\"color\":\"green\"}]"
+					]
+				}
+			},
+			"minecraft:set_very_fast_speed": {
+				"remove": {
+					"component_groups": [
+						"minecraft:slow_speed",
+						"minecraft:normal_speed",
+						"minecraft:fast_speed",
+						"minecraft:super_fast_speed"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:very_fast_speed"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tellraw @p [\"\",{\"text\":\"TNT Minecart speed set to \",\"color\":\"aqua\"},{\"text\":\"5.0\",\"color\":\"yellow\",\"bold\":true},{\"text\":\" (Very Fast)\",\"color\":\"yellow\"}]"
+					]
+				}
+			},
+			"minecraft:set_super_fast_speed": {
+				"remove": {
+					"component_groups": [
+						"minecraft:slow_speed",
+						"minecraft:normal_speed",
+						"minecraft:fast_speed",
+						"minecraft:very_fast_speed"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"minecraft:super_fast_speed"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tellraw @p [\"\",{\"text\":\"TNT Minecart speed set to \",\"color\":\"aqua\"},{\"text\":\"10.0\",\"color\":\"red\",\"bold\":true},{\"text\":\" (Super Fast)\",\"color\":\"red\"}]"
 					]
 				}
 			}

@@ -1,42 +1,42 @@
 {
-	"format_version": 2,
-	"metadata": {
-		"authors": [
-			"MasterWave"
-		],
-		"generated_with": {
-			"bridge": [
-				"2.6.0"
-			],
-			"dash": [
-				"0.10.8"
-			]
-		}
-	},
-	"header": {
-		"name": "Faster Minecarts",
-		"description": "Changes minecart speeds from 0.4 to 1.0! Hopefully Derail Is Fixed! By: CoderAndHacker69",
-		"min_engine_version": [
-			1,
-			19,
-			50
-		],
-		"uuid": "22871cc0-72aa-4666-8891-375d9066aa46",
-		"version": [
-			1,
-			0,
-			0
-		]
-	},
-	"modules": [
-		{
-			"type": "data",
-			"uuid": "9be324a0-1ac5-41a0-9a98-eed627d65b56",
-			"version": [
-				1,
-				0,
-				0
-			]
-		}
-	]
+  "format_version": 2,
+  "metadata": {
+    "authors": [
+      "MasterWave"
+    ],
+    "generated_with": {
+      "bridge": [
+        "2.6.0"
+      ],
+      "dash": [
+        "0.10.8"
+      ]
+    }
+  },
+  "header": {
+    "name": "Faster Minecarts",
+    "description": "Changes minecart speeds from 0.4 to 1.0! Hopefully Derail Is Fixed! By: CoderAndHacker69",
+    "min_engine_version": [
+      1,
+      19,
+      50
+    ],
+    "uuid": "22871cc0-72aa-4666-8891-375d9066aa46",
+    "version": [
+      1,
+      0,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "9be324a0-1ac5-41a0-9a98-eed627d65b56",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
 }
